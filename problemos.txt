@@ -1,0 +1,19 @@
+Wordle Problems:
+
+	- 	When im not in the first line anymore and get the word of the second 
+		line it combines the first and the second one when getting the boardWoard
+		in the check function.
+
+
+		death
+		large
+ 		
+		= deathlarge *~~~DONE~~~*
+
+	-	After the first line color checkin doesn't work anymore, everything is red from there on
+
+	-	Had the occurence that at the fourth line the getting of the boardword doesn't work anymore, console error at line 47 ~cannot read .innerHtml of undefined~ 
+
+	
+
+

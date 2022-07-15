@@ -1,0 +1,44 @@
+* {
+    background-color: black;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.wordle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.board {
+    display: grid;
+    column-gap: 7px;
+    row-gap: 7px;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.input-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    font-size: 32px;
+    width: 60px;
+    height: 65px;
+    border: rgb(102, 98, 98) 1px solid;
+    color: white;
+}
+
