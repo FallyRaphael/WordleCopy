@@ -57,20 +57,21 @@ function check() {
     console.log(boardWord);
     let newCurrline = false;
 
-    for (let y = 0+currLine; y < 5+currLine; y++) {
+    for (let y = 0; y < 5; y++) {
         if (!words.includes(boardWord)) {
             alert("I don't know that one");
             break;
         } else {
             //compare letters and set right colors
             if (wordleLetters[y] === boardLetters[y]) {
-                board.children[y].style.backgroundColor = "green";
+                board.children[y+currLine].style.backgroundColor = "green";
             } else if (wordleLetters.includes(boardLetters[y])) {
-                board.children[y].style.backgroundColor = "yellow";
+                board.children[y+currLine].style.backgroundColor = "yellow";
             } else {
-                board.children[y].style.backgroundColor = "red";
+                board.children[y+currLine].style.backgroundColor = "red";
                 if (lineDone) {
                     newCurrline = true;
+                    console.log("Im in")
                 }
             }
 
