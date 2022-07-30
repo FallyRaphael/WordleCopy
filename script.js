@@ -76,15 +76,13 @@ function check() {
             }
 
         }
+        board.children[y].classList.add("checked");
         lineDone = false;
-        console.log("SHould be false: "+ lineDone);
     }
     if (newCurrline){
         currLine += 5;
         newCurrline = false;
     }
-    console.log("Currline: " + currLine);
-    console.log("SHould be false: "+ lineDone);
 }
 
 function insertLetter() {   
@@ -96,8 +94,12 @@ function insertLetter() {
 
 function delLetter() {
     getCurrBox();
-    board.children[currBox - 1].innerHTML = '';
-    lineDone = false;
+    if(board.children[currBox - 1].classList.length = 1){
+        console.log("fnWEOF")
+        board.children[currBox - 1].innerHTML = '';
+        lineDone = false;
+    }
+    
 }
 
 function getCurrBox() {
