@@ -1,12 +1,6 @@
-let lineDone = false;
-let currLine = 0;
-let keypressed = null;
-let currBox = 0;
+let lineDone = false, currLine = 0, keypressed = null, currBox = 0, wordle = null, words = [], boardWord = null;
 const inputField = document.querySelector(".input-field");
 const board = document.querySelector(".board");
-let wordle = null;
-let words = [];
-let boardWord = null;
 
 async function getWord() {
     const response = await fetch("dictionary.txt");
@@ -36,6 +30,7 @@ document.addEventListener('keydown', function (e) {
         console.log(keypressed);
         insertLetter();
     }
+    
 });
 
 function check() {
