@@ -3,7 +3,7 @@ const inputField = document.querySelector(".input-field");
 const board = document.querySelector(".board");
 
 async function getWord() {
-    const response = await fetch("dictionary.txt");
+    const response = await fetch("../txt/dictionary.txt");
     const data = await response.text();
     words = data.split("\n");
     //get \r out of words
@@ -90,7 +90,6 @@ function insertLetter() {
 function delLetter() {
     getCurrBox();
     if(board.children[currBox - 1].classList.length = 1){
-        console.log("fnWEOF")
         board.children[currBox - 1].innerHTML = '';
         lineDone = false;
     }
