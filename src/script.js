@@ -14,7 +14,6 @@ async function getWord() {
     wordle = words[Math.floor(Math.random() * words.length)];
     console.log(wordle);
 }
-
 getWord();
 
 document.addEventListener('keydown', function (e) {
@@ -64,15 +63,13 @@ function check() {
                 board.children[y+currLine].style.backgroundColor = "yellow";
             } else {
                 board.children[y+currLine].style.backgroundColor = "red";
-                if (lineDone) {
-                    newCurrline = true;
-                    console.log("Im in")
-                }
             }
-
+            if (lineDone) {
+                newCurrline = true;
+            }
+            lineDone = false;
         }
         board.children[y].classList.add("checked");
-        lineDone = false;
     }
     if (newCurrline){
         currLine += 5;
@@ -83,12 +80,10 @@ function check() {
 function insertLetter() {   
     if (!lineDone) {
         board.children[currBox].innerHTML = keypressed;
-        getCurrBox();
     }
 }
 
 function delLetter() {
-    getCurrBox();
     if(board.children[currBox - 1].classList.length = 1){
         board.children[currBox - 1].innerHTML = '';
         lineDone = false;
@@ -103,6 +98,8 @@ function getCurrBox() {
             if (currBox === 5 + currLine) {
                 lineDone = true;
                 console.log("Linedone:" + lineDone);
+            }else{
+                lineDone = false;
             }
             break;
         }
