@@ -40,9 +40,10 @@ function check() {
     for (let i = 0; i < board.children.length; i++) {
         console.log(i);
         //check when the end of the boardWord is
-        if (board.children[i].innerHTML == '') {
+        if (board.children[i + currLine].innerHTML == '' && i + currLine < board.children.length) {
             break;
         } else {
+            console.log(i + currLine);
             boardLetters[i] = board.children[i+currLine].innerHTML;
         }
     }
