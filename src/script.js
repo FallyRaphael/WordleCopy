@@ -38,9 +38,11 @@ function check() {
 
     //get the written boardword
     for (let i = 0; i < board.children.length; i++) {
+        //check if we're done with the board
+        if (i + currLine == 30){ break; }
         console.log(i);
         //check when the end of the boardWord is
-        if (board.children[i + currLine].innerHTML == '' && i + currLine < board.children.length) {
+        if (i + currLine < board.children.length && board.children[i + currLine].innerHTML == '' ) {
             break;
         } else {
             console.log(i + currLine);
