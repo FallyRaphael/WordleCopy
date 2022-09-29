@@ -72,7 +72,8 @@ function check() {
             }
             lineDone = false;
         }
-        board.children[y].classList.add("checked");
+        console.log("SHould be checked")
+        board.children[y+currLine].classList.add("checked");
     }
     if (newCurrline){
         currLine += 5;
@@ -87,11 +88,10 @@ function insertLetter() {
 }
 
 function delLetter() {
-    if(board.children[currBox - 1].classList.length = 1){
-        board.children[currBox - 1].innerHTML = '';
-        lineDone = false;
+    lineDone = false;
+    if (!lineDone && !board.children[currBox-1].classList.contains("checked")) {
+        board.children[currBox-1].innerHTML = '';
     }
-    
 }
 
 function getCurrBox() {
