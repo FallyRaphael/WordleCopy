@@ -18,39 +18,17 @@
     <section>
             <div class="wordle-container">
                 <div class="board">
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
-                    <div class="input-field"></div>
                 </div>
             </div>
     </section>
+    <script>
+        const borad = document.querySelector('.board');
+        for (i = 0; i < 30; i++) {
+            const inputField = document.createElement('div');
+            inputField.classList.add('input-field');
+            borad.appendChild(inputField);
+        }
+    </script>
 <script src="script.js"></script>
 </body>
 </html>
