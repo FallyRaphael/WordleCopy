@@ -26,7 +26,6 @@ document.addEventListener('keydown', function (e) {
     } else if (keypressed === 'Backspace') {
         delLetter();
     } else if (keyvalue >= 65 && keyvalue <= 90) {
-        console.log(keypressed);
         insertLetter();
     }
     
@@ -51,6 +50,7 @@ function check() {
     }
 
     boardWord = boardLetters.join("");
+    boardWord = boardWord.toLowerCase();
     console.log(boardWord);
     let newCurrline = false;
 
@@ -60,12 +60,12 @@ function check() {
             break;
         } else {
             //compare letters and set right colors
-            if (wordleLetters[y] === boardLetters[y]) {
-                board.children[y+currLine].style.backgroundColor = "green";
-            } else if (wordleLetters.includes(boardLetters[y])) {
-                board.children[y+currLine].style.backgroundColor = "yellow";
+            if (wordleLetters[y].toLowerCase() === boardLetters[y].toLowerCase()) {
+                board.children[y+currLine].style.backgroundColor = "#538d4e";
+            } else if (wordleLetters.includes(boardLetters[y].toLowerCase())) {
+                board.children[y+currLine].style.backgroundColor = "#ecc10d";
             } else {
-                board.children[y+currLine].style.backgroundColor = "red";
+                board.children[y+currLine].style.backgroundColor = "#3a3a3c";
             }
             if (lineDone) {
                 newCurrline = true;
@@ -83,6 +83,7 @@ function check() {
 
 function insertLetter() {   
     if (!lineDone) {
+        keypressed = keypressed.toUpperCase();
         board.children[currBox].innerHTML = keypressed;
     }
 }
