@@ -10,9 +10,7 @@ async function getWord() {
     for (let i = 0; i < words.length; i++) {
         words[i] = words[i].replace("\r", "");
     }
-    console.log(words);
     wordle = words[Math.floor(Math.random() * words.length)];
-    console.log(wordle);
 }
 getWord();
 
@@ -39,19 +37,16 @@ function check() {
     for (let i = 0; i < board.children.length; i++) {
         //check if we're done with the board
         if (i + currLine == 30){ break; }
-        console.log(i);
         //check when the end of the boardWord is
         if (i + currLine < board.children.length && board.children[i + currLine].innerHTML == '' ) {
             break;
         } else {
-            console.log(i + currLine);
             boardLetters[i] = board.children[i+currLine].innerHTML;
         }
     }
 
     boardWord = boardLetters.join("");
     boardWord = boardWord.toLowerCase();
-    console.log(boardWord);
     let newCurrline = false;
 
     for (let y = 0; y < 5; y++) {
@@ -72,7 +67,6 @@ function check() {
             }
             lineDone = false;
         }
-        console.log("SHould be checked")
         board.children[y+currLine].classList.add("checked");
     }
     if (newCurrline){
@@ -101,7 +95,6 @@ function getCurrBox() {
             currBox = i;
             if (currBox === 5 + currLine) {
                 lineDone = true;
-                console.log("Linedone:" + lineDone);
             }else{
                 lineDone = false;
             }
