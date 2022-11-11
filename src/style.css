@@ -1,5 +1,5 @@
 * {
-    background-color: black;
+    background-color: #121213;
     box-sizing: border-box;
     font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
     color: white;
@@ -35,7 +35,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: #121213;
     font-size: 32px;
     font-weight: bolder;
     width: 60px;
@@ -44,5 +44,40 @@ h1 {
     color: white;
 }
 
+.win-screen {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.win-board {
+    border-radius: 15px;
+    padding: 20px 100px;
+    justify-items: center;
+    display: grid;
+    column-gap: 7px;
+    row-gap: 70px;
+    grid-template-columns: repeat(1, 5fr);
+}
+
+button {
+    border-radius: 20px;
+    background-color: #538d4e;
+    border: none;
+    padding: 10px 28px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
 

@@ -1,6 +1,5 @@
-let lineDone = false, currLine = 0, keypressed = null, currBox = 0, wordle = null, words = [], boardWord = null;
-const inputField = document.querySelector(".input-field");
-const board = document.querySelector(".board");
+let lineDone = false, currLine = 0, keypressed = null, currBox = 0, wordle = null, words = [], boardWord = null, wini = false;
+const inputField = document.querySelector(".input-field"), board = document.querySelector(".board"), win_screen = document.querySelector(".win-screen"), win_screen_button = document.querySelector(".win-screen button");
 
 async function getWord() {
     const response = await fetch("../txt/dictionary.txt");
@@ -19,12 +18,14 @@ document.addEventListener('keydown', function (e) {
     keyvalue = e.keyCode;
     getCurrBox();
 
-    if (keypressed === 'Enter') {
-        check();
-    } else if (keypressed === 'Backspace') {
-        delLetter();
-    } else if (keyvalue >= 65 && keyvalue <= 90) {
-        insertLetter();
+    if (!wini) {
+        if (keypressed === 'Enter') {
+            check();
+        } else if (keypressed === 'Backspace') {
+            delLetter();
+        } else if (keyvalue >= 65 && keyvalue <= 90) {
+            insertLetter();
+        }
     }
     
 });
@@ -69,10 +70,20 @@ function check() {
         }
         board.children[y+currLine].classList.add("checked");
     }
+
+    if (boardWord === wordle) {
+        win();
+    }
+
     if (newCurrline){
         currLine += 5;
         newCurrline = false;
     }
+}
+
+function win() {
+    win_screen.style.display = "flex";
+    wini = true;
 }
 
 function insertLetter() {   
@@ -102,3 +113,8 @@ function getCurrBox() {
         }
     }
 }
+
+win_screen_button.addEventListener('click', function () {
+    location.reload();
+    win = false;
+});
