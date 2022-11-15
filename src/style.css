@@ -68,6 +68,30 @@ h1 {
     grid-template-columns: repeat(1, 5fr);
 }
 
+.lose-screen {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.lose-board {
+    border-radius: 15px;
+    padding: 20px 100px;
+    justify-items: center;
+    display: grid;
+    column-gap: 7px;
+    row-gap: 70px;
+    grid-template-columns: repeat(1, 5fr);
+}
+
 button {
     border-radius: 20px;
     background-color: #538d4e;

@@ -1,5 +1,5 @@
-let lineDone = false, currLine = 0, keypressed = null, currBox = 0, wordle = null, words = [], boardWord = null, wini = false;
-const inputField = document.querySelector(".input-field"), board = document.querySelector(".board"), win_screen = document.querySelector(".win-screen"), win_screen_button = document.querySelector(".win-screen button");
+let lineDone = false, currLine = 0, keypressed = null, currBox = 0, wordle = null, words = [], boardWord = null, game_overbool = false;
+const inputField = document.querySelector(".input-field"), board = document.querySelector(".board"), win_screen = document.querySelector(".win-screen"), win_screen_button = document.querySelector(".win-screen button"),lose_screen = document.querySelector(".lose-screen"), word_was = document.querySelector("#word");
 
 async function getWord() {
     const response = await fetch("../txt/dictionary.txt");
@@ -18,7 +18,7 @@ document.addEventListener('keydown', function (e) {
     keyvalue = e.keyCode;
     getCurrBox();
 
-    if (!wini) {
+    if (!game_overbool) {
         if (keypressed === 'Enter') {
             check();
         } else if (keypressed === 'Backspace') {
@@ -54,6 +54,9 @@ function check() {
         if (!words.includes(boardWord)) {
             alert("I don't know that one");
             break;
+        } else if (getCurrBox() == 29) {
+            console.log("game over");
+            game_over();
         } else {
             //compare letters and set right colors
             if (wordleLetters[y].toLowerCase() === boardLetters[y].toLowerCase()) {
@@ -72,7 +75,7 @@ function check() {
     }
 
     if (boardWord === wordle) {
-        win();
+        game_over();
     }
 
     if (newCurrline){
@@ -81,9 +84,13 @@ function check() {
     }
 }
 
-function win() {
-    win_screen.style.display = "flex";
-    wini = true;
+function game_over() {
+    game_overbool = true;
+    if(getCurrBox === 29) {
+        lose_screen.style.display = "flex";
+    }else {
+        win_screen.style.display = "flex";
+    }
 }
 
 function insertLetter() {   
@@ -95,10 +102,13 @@ function insertLetter() {
 
 function delLetter() {
     lineDone = false;
+    if (getCurrBox() == 29) {
+        board.children[29].innerHTML = '';
+    }
     if (!lineDone && !board.children[currBox-1].classList.contains("checked")) {
         board.children[currBox-1].innerHTML = '';
     }
-}
+}   
 
 function getCurrBox() {
     for (let i = 0; i < board.children.length; i++) {
@@ -116,5 +126,5 @@ function getCurrBox() {
 
 win_screen_button.addEventListener('click', function () {
     location.reload();
-    win = false;
+    game_over = false;
 });
