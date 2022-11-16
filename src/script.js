@@ -55,7 +55,6 @@ function check() {
             alert("I don't know that one");
             break;
         } else if (getCurrBox() == 29) {
-            console.log("game over");
             game_over();
         } else {
             //compare letters and set right colors
