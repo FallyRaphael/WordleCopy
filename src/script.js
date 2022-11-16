@@ -94,7 +94,7 @@ function game_over() {
 }
 
 function insertLetter() {   
-    if (!lineDone) {
+    if (!lineDone && board.children[29].innerHTML === '') {
         keypressed = keypressed.toUpperCase();
         board.children[currBox].innerHTML = keypressed;
     }
@@ -102,10 +102,10 @@ function insertLetter() {
 
 function delLetter() {
     lineDone = false;
-    if (getCurrBox() == 29) {
-        board.children[29].innerHTML = '';
-    }
-    if (!lineDone && !board.children[currBox-1].classList.contains("checked")) {
+    if(currBox===29 && board.children[currBox].innerHTML !== '') {
+        board.children[currBox].innerHTML = '';
+    } else if (!lineDone && !board.children[currBox-1].classList.contains("checked")) {
+        getCurrBox();
         board.children[currBox-1].innerHTML = '';
     }
 }   
