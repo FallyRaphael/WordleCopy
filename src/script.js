@@ -1,11 +1,10 @@
 let lineDone = false, currLine = 0, keypressed = null, currBox = 0, wordle = null, words = [], boardWord = null, game_overbool = false;
-const inputField = document.querySelector(".input-field"), board = document.querySelector(".board"), win_screen = document.querySelector(".win-screen"), play_again_button = document.querySelector("button"),lose_screen = document.querySelector(".lose-screen"), word_was = document.querySelector("#word");
+const inputField = document.querySelector(".input-field"), board = document.querySelector(".board"), win_screen = document.querySelector(".win-screen"), play_again_button = document.querySelectorAll("buttons"), lose_screen = document.querySelector(".lose-screen"), word = document.querySelector("#word");
 
 async function getWord() {
     const response = await fetch("../txt/dictionary.txt");
     const data = await response.text();
     words = data.split("\n");
-    //get \r out of words
     for (let i = 0; i < words.length; i++) {
         words[i] = words[i].replace("\r", "");
     }
@@ -19,7 +18,7 @@ document.addEventListener('keydown', function (e) {
     getCurrBox();
 
     if (!game_overbool) {
-        if (keypressed === 'Enter') {
+        if(keypressed === 'Enter') {
             check();
         } else if (keypressed === 'Backspace') {
             delLetter();
@@ -34,11 +33,8 @@ function check() {
     const wordleLetters = wordle.split("");
     const boardLetters = [];
 
-    //get the written boardword
     for (let i = 0; i < board.children.length; i++) {
-        //check if we're done with the board
         if (i + currLine == 30){ break; }
-        //check when the end of the boardWord is
         if (i + currLine < board.children.length && board.children[i + currLine].innerHTML == '' ) {
             break;
         } else {
@@ -88,6 +84,7 @@ function game_over() {
     console.log("game over");
     if(currBox === 29) {
         lose_screen.style.display = "flex";
+        word.innerHTML = wordle.toUpperCase();
     }else {
         win_screen.style.display = "flex";
     }
