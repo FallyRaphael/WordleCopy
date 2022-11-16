@@ -1,5 +1,5 @@
 let lineDone = false, currLine = 0, keypressed = null, currBox = 0, wordle = null, words = [], boardWord = null, game_overbool = false;
-const inputField = document.querySelector(".input-field"), board = document.querySelector(".board"), win_screen = document.querySelector(".win-screen"), win_screen_button = document.querySelector(".win-screen button"),lose_screen = document.querySelector(".lose-screen"), word_was = document.querySelector("#word");
+const inputField = document.querySelector(".input-field"), board = document.querySelector(".board"), win_screen = document.querySelector(".win-screen"), play_again_button = document.querySelector("button"),lose_screen = document.querySelector(".lose-screen"), word_was = document.querySelector("#word");
 
 async function getWord() {
     const response = await fetch("../txt/dictionary.txt");
@@ -54,7 +54,7 @@ function check() {
         if (!words.includes(boardWord)) {
             alert("I don't know that one");
             break;
-        } else if (getCurrBox() == 29) {
+        } else if (currBox === 29) {
             game_over();
         } else {
             //compare letters and set right colors
@@ -85,7 +85,8 @@ function check() {
 
 function game_over() {
     game_overbool = true;
-    if(getCurrBox === 29) {
+    console.log("game over");
+    if(currBox === 29) {
         lose_screen.style.display = "flex";
     }else {
         win_screen.style.display = "flex";
@@ -123,7 +124,7 @@ function getCurrBox() {
     }
 }
 
-win_screen_button.addEventListener('click', function () {
+play_again_button.addEventListener('click', function () {
     location.reload();
     game_over = false;
 });
