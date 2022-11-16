@@ -1,5 +1,5 @@
 let lineDone = false, currLine = 0, keypressed = null, currBox = 0, wordle = null, words = [], boardWord = null, game_overbool = false;
-const inputField = document.querySelector(".input-field"), board = document.querySelector(".board"), win_screen = document.querySelector(".win-screen"), play_again_button = document.querySelectorAll("buttons"), lose_screen = document.querySelector(".lose-screen"), word = document.querySelector("#word");
+const inputField = document.querySelector(".input-field"), board = document.querySelector(".board"), win_screen = document.querySelector(".win-screen"), play_again_button = document.querySelectorAll("button"), lose_screen = document.querySelector(".lose-screen"), word = document.querySelector("#word");
 
 async function getWord() {
     const response = await fetch("../txt/dictionary.txt");
@@ -121,7 +121,9 @@ function getCurrBox() {
     }
 }
 
-play_again_button.addEventListener('click', function () {
-    location.reload();
-    game_over = false;
+play_again_button.forEach(button => {
+    button.addEventListener('click', function () {
+        location.reload();
+        game_overbool = false;
+    });
 });
