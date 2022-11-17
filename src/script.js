@@ -34,12 +34,10 @@ function check() {
     const boardLetters = [];
 
     for (let i = 0; i < board.children.length; i++) {
-        if (i + currLine == 30){ break; }
+        if (i + currLine == 30) break;
         if (i + currLine < board.children.length && board.children[i + currLine].innerHTML == '' ) {
             break;
-        } else {
-            boardLetters[i] = board.children[i+currLine].innerHTML;
-        }
+        } else boardLetters[i] = board.children[i+currLine].innerHTML;
     }
 
     boardWord = boardLetters.join("");
@@ -53,7 +51,6 @@ function check() {
         } else if (currBox === 29) {
             game_over();
         } else {
-            //compare letters and set right colors
             if (wordleLetters[y].toLowerCase() === boardLetters[y].toLowerCase()) {
                 board.children[y+currLine].style.backgroundColor = "#538d4e";
             } else if (wordleLetters.includes(boardLetters[y].toLowerCase())) {
