@@ -1,18 +1,15 @@
 let lineDone = false, currLine = 0, keypressed = null, currBox = 0, wordle = null, words = [], boardWord = null, game_overbool = false;
-const inputField = document.querySelector(".input-field"), board = document.querySelector(".board"), win_screen = document.querySelector(".win-screen"), play_again_button = document.querySelectorAll("button"), lose_screen = document.querySelector(".lose-screen"), word = document.querySelector("#word");
+const inputField = document.querySelector(".input-field"), board = document.querySelector(".board"), win_screen = document.querySelector(".win-screen"), play_again_button = document.querySelectorAll("button"), lose_screen = document.querySelector(".lose-screen"), wordl = document.querySelector("#wordl"), wordw = document.querySelector("#wordw");
 
 async function getWord() {
     const response = await fetch("../txt/dictionary.txt");
     const data = await response.text();
-    words = data.split("\n");
-    for (let i = 0; i < words.length; i++) {
-        words[i] = words[i].replace("\r", "");
-    }
+    words = data.split("\n").map((word) => word.replace(/\r/g, ''));
     wordle = words[Math.floor(Math.random() * words.length)];
 }
 getWord();
 
-document.addEventListener('keydown', function (e) {
+document.addEventListener('keydown', (e) => {
     keypressed = e.key;
     keyvalue = e.keyCode;
     getCurrBox();
@@ -81,9 +78,10 @@ function game_over() {
     game_overbool = true;
     if(boardWord !== wordle) {
         lose_screen.style.display = "flex";
-        word.innerHTML = wordle.toUpperCase();
+        wordl.innerHTML = wordle.toUpperCase();
     }else {
         win_screen.style.display = "flex";
+        wordw.innerHTML = wordle.toUpperCase();
     }
 }
 
