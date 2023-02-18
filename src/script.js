@@ -46,10 +46,8 @@ function check() {
 
     for (let y = 0; y < 5; y++) {
         if (!words.includes(boardWord)) {
-            alert("I don't know that one");
+            alert("Word not in list");
             break;
-        } else if (currBox === 29) {
-            game_over();
         } else {
             if (wordleLetters[y].toLowerCase() === boardLetters[y].toLowerCase()) {
                 board.children[y+currLine].style.backgroundColor = "#538d4e";
@@ -65,6 +63,9 @@ function check() {
         }
         board.children[y+currLine].classList.add("checked");
     }
+    if (currBox === 29) {
+        game_over();
+    }
 
     if (boardWord === wordle) {
         game_over();
@@ -78,8 +79,7 @@ function check() {
 
 function game_over() {
     game_overbool = true;
-    console.log("game over");
-    if(currBox === 29) {
+    if(boardWord !== wordle) {
         lose_screen.style.display = "flex";
         word.innerHTML = wordle.toUpperCase();
     }else {
